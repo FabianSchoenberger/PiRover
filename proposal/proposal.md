@@ -51,9 +51,10 @@ It will be developed using Svelte.
 
 ### Sensor Data Processing with UI Interface for Data Exploration
 
-As part of the project, we implement a Grafana-based user interface running on a Raspberry Pi, which connects to a local PostgreSQL database for data visualization. \
+As part of the project, we implement a Grafana-based user interface running on a Raspberry Pi, which connects to a local PostgreSQL database for data visualization.
+
 The PiRover continuously sends data from sensors and actuators - including motor status, ultrasonic distance readings, accelerometer data, and binary light sensor states (on/off). 
-Additionally, the rover broadcasts a high-level status tag indicating its current mode (like idle, exploring, or obstacle detected).\
+Additionally, the rover broadcasts a high-level status tag indicating its current mode (like idle, exploring, or obstacle detected).
 
 The data is structured into dedicated tables for each sensor and actuator, within the PostgreSQL database.
 With Grafana, users can explore historical data and identify behavioral patterns over time. For example, analyzing the correlation between ultrasonic sensor readings and the rover’s obstacle detection mode to assess the decision-making logic.
