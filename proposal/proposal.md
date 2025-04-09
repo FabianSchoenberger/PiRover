@@ -3,7 +3,7 @@
 Group 5
 
 kxxxxxxxx, Abudllah Arij \
-kxxxxxxxx, Olivotto Philipp \
+k12223453, Olivotto Philipp \
 kxxxxxxxx, Pichler Alexander \
 k12308997, Schoenberger Fabian \
 kxxxxxxxx, Siala Alexander (Leader)
@@ -51,11 +51,13 @@ It will be developed using Svelte.
 
 ### Sensor Data Processing with UI Interface for Data Exploration
 
-As part of the project, we implement a Grafana-based user interface running on a Raspberry Pi, which connects to a local PostgreSQL database for data visualization. 
-The data is continuously sent from the PiRover, which publishes sensor and actuator information — including motor status, ultrasonic distance readings, accelerometer data, and binary light sensor states (on/off). 
-Additionally, the rover broadcasts a high-level status tag indicating its current mode (like idle, exploring, or obstacle detected). This data is structured into dedicated tables for each sensor and actuator, within the PostgreSQL database. 
-With Grafana, users can interactively explore this historical data and identify behavioral patterns over time—for example, analyzing the correlation between ultrasonic sensor readings and the rover’s obstacle detection mode to assess its responsiveness and decision-making logic. 
-Also, a total distance traveled by the rover can be calculated and displayed in the UI. This setup not only enhances the user experience but also provides valuable insights into the rover's performance and behavior.
+As part of the project, we implement a Grafana-based user interface running on a Raspberry Pi, which connects to a local PostgreSQL database for data visualization. \
+The PiRover continuously sends data from sensors and actuators - including motor status, ultrasonic distance readings, accelerometer data, and binary light sensor states (on/off). 
+Additionally, the rover broadcasts a high-level status tag indicating its current mode (like idle, exploring, or obstacle detected).\
+
+The data is structured into dedicated tables for each sensor and actuator, within the PostgreSQL database.
+With Grafana, users can explore historical data and identify behavioral patterns over time. For example, analyzing the correlation between ultrasonic sensor readings and the rover’s obstacle detection mode to assess the decision-making logic.
+This setup not only enhances the user experience but also provides valuable insights into the rover's performance and behavior.
 
 ## System Architecture
 
