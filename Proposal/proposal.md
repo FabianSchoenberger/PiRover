@@ -22,6 +22,11 @@ For sensors, we plan for our PiRover to have a few:
 
 The PiRover is supposed to be controlled via a Web-Interface. We will allow inputs for acceleration and steering, which the PiRover should behave according to in real-time. In addition, the pilot should get feedback from the different sensors. The accelerometer tells him how fast he is going, the ultrasonic tells him how far he is away from an object and the camera allows him to see what is in front of him. Additionally, we also plan that the Web-Interface has some kind of statistics page, where date like camera footage, brightness, speed and distance are aggregated and presented in interesting ways. 
 
+
+##### Sensor Data Processing with UI Interface for Data Exploration
+
+As part of the project, we implement a Grafana-based user interface running on a Raspberry Pi, which connects to a local PostgreSQL database for data visualization. The data is continuously sent from the PiRover, which publishes sensor and actuator information — including motor status, ultrasonic distance readings, accelerometer data, and binary light sensor states (on/off). Additionally, the rover broadcasts a high-level status tag indicating its current mode (like idle, exploring, or obstacle detected). This data is structured into dedicated tables for each sensor and actuator, within the PostgreSQL database. With Grafana, users can interactively explore this historical data and identify behavioral patterns over time—for example, analyzing the correlation between ultrasonic sensor readings and the rover’s obstacle detection mode to assess its responsiveness and decision-making logic. Also a total distance traveled by the rover can be calculated and displayed in the UI. This setup not only enhances the user experience but also provides valuable insights into the rover's performance and behavior.
+
 ### System architecture
 
 We are planning that our Web-Interface communicates with the Raspberry Pie on the PiRover via MQTT. We will use a second Rasberry Pie as our MQTT Broker. The architecture can be seen in the image below:
