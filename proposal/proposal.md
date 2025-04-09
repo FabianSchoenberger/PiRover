@@ -71,9 +71,14 @@ To ensure full mobility while still being connected to the internet, we are goin
 
 ## Hardware List
 
-//TODO
-
-[Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://www.amazon.de/-/en/Freenove-Three-Wheeled-Raspberry-Detailed-Ultrasonic/dp/B06W54XC9V/?_encoding=UTF8&pd_rd_w=NbBPv&content-id=amzn1.sym.16038c01-cfea-4f09-a119-c9f8c051c46c%3Aamzn1.symc.fc11ad14-99c1-406b-aa77-051d0ba1aade&pf_rd_p=16038c01-cfea-4f09-a119-c9f8c051c46c&pf_rd_r=C9APQH9AX00SJGGV74ZT&pd_rd_wg=PN9IM&pd_rd_r=f792269b-8805-4245-86c0-df937cf69d77&ref_=pd_hp_d_atf_ci_mcx_mr_ca_hp_atf_d)
+| part              | further information                                                                                                                    | requested |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------|-----------|
+| 2x Raspberry Pi   |                                                                                                                                        | yes       |
+| vehicle           | [Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://amzn.eu/d/hJ5U5ri) <br/> includes motors, camera and ultrasonic sensor | no        |
+| battery pack      |                                                                                                                                        | yes       |
+| lights            | at least 1x white and 1x red                                                                                                           | ?         |
+| accelerometer     |                                                                                                                                        | yes       |
+| brightness sensor |                                                                                                                                        | ?         |
 
 ## Fulfillment of Project Requirements
 
