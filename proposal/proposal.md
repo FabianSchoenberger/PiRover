@@ -40,7 +40,7 @@ Its data can also be used to activate the rear light(s) when required.
 ### Web Interface
 
 The PiRover will be remotely controlled via a Web-Interface. 
-The interface will show a live feed of the camera and allows for the control of the vehicles acceleration and steering. 
+The interface will show a live feed of the camera and allows for the control of the vehicle's acceleration and steering. 
 Furthermore, the front lights can be overridden to be permanently on or off.
 In addition, the driver will be given important information like speed, acceleration and information whether something is behind the vehicle.
 
@@ -57,15 +57,20 @@ Additionally, it will publish relevant sensor data to the broker and subscribe t
 
 Technically, a third point of contact is involved: the browser from which the application is opened.
 
-![Architecture](img/Architecture.png) //TODO fix image
+![Architecture](img/architecture.png)
 
-To ensure full mobility while still being connected to the internet, we are going to connect the vehicles Raspberry Pi to Wi-Fi.
+To ensure full mobility while still being connected to the internet, we are going to connect the vehicle's Raspberry Pi to Wi-Fi.
 
 ## Hardware List
+
+//TODO
 
 [Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://www.amazon.de/-/en/Freenove-Three-Wheeled-Raspberry-Detailed-Ultrasonic/dp/B06W54XC9V/?_encoding=UTF8&pd_rd_w=NbBPv&content-id=amzn1.sym.16038c01-cfea-4f09-a119-c9f8c051c46c%3Aamzn1.symc.fc11ad14-99c1-406b-aa77-051d0ba1aade&pf_rd_p=16038c01-cfea-4f09-a119-c9f8c051c46c&pf_rd_r=C9APQH9AX00SJGGV74ZT&pd_rd_wg=PN9IM&pd_rd_r=f792269b-8805-4245-86c0-df937cf69d77&ref_=pd_hp_d_atf_ci_mcx_mr_ca_hp_atf_d)
 
 ## Fulfillment of Project Requirements
 
+//TODO
+
 ## Timeline
 
+//TODO
