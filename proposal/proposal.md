@@ -4,9 +4,9 @@ Group 5
 
 kxxxxxxxx, Abudllah Arij \
 k12223453, Olivotto Philipp \
-kxxxxxxxx, Pichler Alexander \
+k12315349, Pichler Alexander \
 k12308997, Schoenberger Fabian \
-kxxxxxxxx, Siala Alexander (Leader)
+k12309011, Siala Alexander (Leader)
 
 ## Description
 
@@ -74,8 +74,6 @@ Technically, a third point of contact is involved: the browser from which the ap
 To ensure full mobility while still being connected to the internet, we are going to connect the vehicle's Raspberry Pi to Wi-Fi.
 
 ## Hardware List
-
-TODO 
 
 | part              | further information                                                                                                                               | requested     |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
