@@ -3,7 +3,7 @@
 Group 5\
 GitHub Link: https://github.com/FabianSchoenberger/PiRover
 
-K12008656, Abudllah Arij \
+k12008656, Abudllah Arij \
 k12223453, Olivotto Philipp \
 k12315349, Pichler Alexander \
 k12308997, Schoenberger Fabian \
@@ -77,7 +77,7 @@ To ensure full mobility while still being connected to the internet, we are goin
 ## Hardware List
 
 | part              | further information                                                                                                                               | requested     |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | 2x Raspberry Pi   | 1x Raspberry Pi 3 Model B                                                                                                                         | yes           |
 | vehicle           | [Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://amzn.eu/d/hJ5U5ri) <br/> includes all 3 motors, a camera and an ultrasonic sensor | no            |
 | battery pack      |                                                                                                                                                   | yes           |
@@ -103,23 +103,22 @@ Although our project only uses 4 sensors for 5 people, we feel the complexity of
 
 ## Timeline
 
-#### PiRover (Abudllah, Siala)
-1. setup
-2. assemble vehicle (ASAP ~ 30th of April(?))
+#### PiRover (Abudllah, Siala, Schoenberger)
+1. setup (ASAP ~ 30th of April)
+2. assemble vehicle (ASAP ~ 30th of April)
 3. test sensors and actuators (30th of April)
 4. collect and publish sensor and actuator data (4th of May)
 5. control lights based on data (11th of May)
 6. handle driving input (18th of May)
 
-#### RemotePi (our second Raspberry Pi) (Abudllah, Siala)
+#### RemotePi (our second Raspberry Pi) (Siala)
 1. setup (ASAP ~ 30th of April)
-2. install and setup MQTT broker (2th of May)
+2. install and setup MQTT broker (2nd of May)
 3. deploy Web Interface (6th of May)
-4. adjust/fix Web Interface for driving input (25th of May)
 
 #### Web Interface (Pichler, Schoenberger)
 1. display camera feed (11th of May)
-2. display current data (acceleration, lighting states, front lighting mode (automatic, manual)) (18th of May)
+2. display received data (18th of May)
 3. control lights manually (18th of May)
 4. keyboard driving controls (25th of May)
 5. display data about objects behind PiRover (25th of May)
@@ -128,5 +127,5 @@ Although our project only uses 4 sensors for 5 people, we feel the complexity of
 #### Grafana & PostgreSQL (Olivotto)
 1. create a json format for the data that will be sent (ASAP ~ 30th of April)
 2. setup PostgreSQL on the RemotePi and create tables for the data (4th of May)
-3. python application on RemotePi that subscribes to the MQTT topic "data" and stores it into Postgre (4th of May)
-4. setup Grafana and create some useful dashboards with the data from Postgre (1st of June)
+3. python application on RemotePi that subscribes to the MQTT topic "data" and stores it into Postgres (4th of May)
+4. setup Grafana and create some useful dashboards with the data from Postgres (1st of June)
