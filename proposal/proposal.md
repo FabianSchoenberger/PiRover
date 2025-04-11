@@ -49,7 +49,7 @@ The vehicle will be controlled via standard WASD + arrow keys controls and will 
 
 It will be developed using Svelte.
 
-### Sensor Data Processing with UI Interface for Data Exploration
+### Data-Processing
 
 As part of the project, we implement a Grafana-based user interface running on a Raspberry Pi, which connects to a local PostgreSQL database for data visualization.
 
@@ -75,19 +75,57 @@ To ensure full mobility while still being connected to the internet, we are goin
 
 ## Hardware List
 
-| part              | further information                                                                                                                    | requested |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| 2x Raspberry Pi   |                                                                                                                                        | yes       |
-| vehicle           | [Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://amzn.eu/d/hJ5U5ri) <br/> includes motors, camera and ultrasonic sensor | no        |
-| battery pack      |                                                                                                                                        | yes       |
-| lights            | at least 1x white and 1x red                                                                                                           | ?         |
-| accelerometer     |                                                                                                                                        | yes       |
-| brightness sensor |                                                                                                                                        | ?         |
+TODO 
+
+| part              | further information                                                                                                                               | requested     |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| 2x Raspberry Pi   |                                                                                                                                                   | yes           |
+| vehicle           | [Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://amzn.eu/d/hJ5U5ri) <br/> includes all 3 motors, a camera and an ultrasonic sensor | no            |
+| battery pack      |                                                                                                                                                   | yes           |
+| lights            | at least 1x white and 1x red                                                                                                                      | yes           |
+| accelerometer     |                                                                                                                                                   | if possible * |
+| brightness sensor |                                                                                                                                                   | if available  |
+
+\* due to an addon that comes with the vehicle, the sense-hat addon will (probably?) not fit
 
 ## Fulfillment of Project Requirements
 
-//TODO
+Our project requires a lot of communication and coordination with sensors/actuators and in between different systems.
+These systems need to work in real-time without sacrificing quality requiring us to design a robust architecture.
+
+The PiRover needs to: read sensor data, manage current actuator state and control actuators based on both sensor data and driving inputs received over MQTT. \
+The Web Interface needs to: efficiently display received sensor and actuator data and implement intuitive controls (keyboard and gamepad)
+
+Furthermore, we will implement Grafana which will let us analyze and monitor sensor and actuator data.
+
+All 4 sensors and 5 actuators fulfill a vital role in the overall driving experience. \
+Although our project only uses 4 sensors for 5 people, we feel the complexity of the project should outweigh alleviate this requirement.
 
 ## Timeline
 
-//TODO
+TODO: add due dates to each sub-task
+
+PiRover
+1. setup
+2. assemble vehicle
+3. test sensors and actuators
+4. collect and publish sensor and actuator data
+5. control lights based on data
+6. handle driving input
+
+RemotePi (our second Raspberry Pi)
+1. setup
+2. install and setup MQTT broker
+3. deploy Web Interface
+4. setup Grafana
+
+Web Interface
+1. display camera feed
+2. display current data (acceleration, lighting states, front lighting mode (automatic, manual))
+3. control lights manually
+4. keyboard driving controls
+5. gamepad driving controls
+6. display data about objects behind PiRover
+
+Grafana
+1. TODO@Philipp
