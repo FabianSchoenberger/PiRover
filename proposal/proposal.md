@@ -77,14 +77,15 @@ To ensure full mobility while still being connected to the internet, we are goin
 
 | part              | further information                                                                                                                               | requested     |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| 2x Raspberry Pi   |                                                                                                                                                   | yes           |
+| 2x Raspberry Pi   | 1x Raspberry Pi 3 Model B                                                                                                                         | yes           |
 | vehicle           | [Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://amzn.eu/d/hJ5U5ri) <br/> includes all 3 motors, a camera and an ultrasonic sensor | no            |
 | battery pack      |                                                                                                                                                   | yes           |
 | lights            | at least 1x white and 1x red                                                                                                                      | yes           |
 | accelerometer     |                                                                                                                                                   | if possible * |
 | brightness sensor |                                                                                                                                                   | if available  |
 
-\* due to an addon that comes with the vehicle, the sense-hat addon will (probably?) not fit
+\* due to an addon that comes with the vehicle, the sense-hat addon will not fit.
+This means we will need a standalone accelerometer.
 
 ## Fulfillment of Project Requirements
 
