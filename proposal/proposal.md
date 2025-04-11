@@ -24,7 +24,7 @@ The vehicle will have to be assembled by us with the help of a manual.
 
 The vehicle will have the following actuators:
 - Two motors to drive the vehicle.
-- A motor to turn the camera.
+- 3 servos to turn the camera.
 - Rear light(s) to indicate slowing down or driving backwards.
 - Front light(s) to illuminate the path when it is dark.
 
