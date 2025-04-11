@@ -97,7 +97,7 @@ The Web Interface needs to: efficiently display received sensor and actuator dat
 
 Furthermore, we will implement Grafana which will let us analyze and monitor sensor and actuator data.
 
-All 4 sensors and 5 actuators fulfill a vital role in the overall driving experience. \
+All 4 sensors and 7 actuators fulfill a vital role in the overall driving experience. \
 Although our project only uses 4 sensors for 5 people, we feel the complexity of the project should outweigh alleviate this requirement.
 
 ## Timeline
