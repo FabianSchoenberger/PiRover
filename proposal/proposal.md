@@ -1,8 +1,9 @@
 # Project Proposal - PiRover
 
-Group 5
+Group 5\
+GitHub Link: https://github.com/FabianSchoenberger/PiRover
 
-kxxxxxxxx, Abudllah Arij \
+K12008656, Abudllah Arij \
 k12223453, Olivotto Philipp \
 k12315349, Pichler Alexander \
 k12308997, Schoenberger Fabian \
@@ -30,7 +31,7 @@ The vehicle will have the following actuators:
 
 ### Sensors
 
-For sensors, we plan for our PiRover to have a few:
+For sensors, we plan for our PiRover to have the following:
 - A camera to be able to see a live feed of what is in front of the vehicle.
 - An ultrasonic sensor for measuring distances which will assist the driver when driving backwards. 
 The application will display a warning if the vehicle is about to bump into anything.
@@ -76,7 +77,7 @@ To ensure full mobility while still being connected to the internet, we are goin
 ## Hardware List
 
 | part              | further information                                                                                                                               | requested     |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | 2x Raspberry Pi   | 1x Raspberry Pi 3 Model B                                                                                                                         | yes           |
 | vehicle           | [Freenove Three-Wheeled Smart Car Kit for Raspberry Pi](https://amzn.eu/d/hJ5U5ri) <br/> includes all 3 motors, a camera and an ultrasonic sensor | no            |
 | battery pack      |                                                                                                                                                   | yes           |
@@ -102,29 +103,30 @@ Although our project only uses 4 sensors for 5 people, we feel the complexity of
 
 ## Timeline
 
-TODO: add due dates to each sub-task
-
-PiRover
+#### PiRover (Abudllah, Siala)
 1. setup
-2. assemble vehicle
-3. test sensors and actuators
-4. collect and publish sensor and actuator data
-5. control lights based on data
-6. handle driving input
+2. assemble vehicle (ASAP ~ 30th of April(?))
+3. test sensors and actuators (30th of April)
+4. collect and publish sensor and actuator data (4th of May)
+5. control lights based on data (11th of May)
+6. handle driving input (18th of May)
 
-RemotePi (our second Raspberry Pi)
-1. setup
-2. install and setup MQTT broker
-3. deploy Web Interface
-4. setup Grafana
+#### RemotePi (our second Raspberry Pi) (Abudllah, Siala)
+1. setup (ASAP ~ 30th of April)
+2. install and setup MQTT broker (2th of May)
+3. deploy Web Interface (6th of May)
+4. adjust/fix Web Interface for driving input (25th of May)
 
-Web Interface
-1. display camera feed
-2. display current data (acceleration, lighting states, front lighting mode (automatic, manual))
-3. control lights manually
-4. keyboard driving controls
-5. gamepad driving controls
-6. display data about objects behind PiRover
+#### Web Interface (Pichler, Schoenberger)
+1. display camera feed (11th of May)
+2. display current data (acceleration, lighting states, front lighting mode (automatic, manual)) (18th of May)
+3. control lights manually (18th of May)
+4. keyboard driving controls (25th of May)
+5. display data about objects behind PiRover (25th of May)
+6. gamepad driving controls (1st of June)
 
-Grafana
-1. TODO@Philipp
+#### Grafana & PostgreSQL (Olivotto)
+1. create a json format for the data that will be sent (ASAP ~ 30th of April)
+2. setup PostgreSQL on the RemotePi and create tables for the data (4th of May)
+3. python application on RemotePi that subscribes to the MQTT topic "data" and stores it into Postgre (4th of May)
+4. setup Grafana and create some useful dashboards with the data from Postgre (1st of June)
