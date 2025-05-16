@@ -24,12 +24,12 @@ def set(cmd, value):
     time.sleep(0.001)
 
 
-def setServo(servo, angle):
+def set_servo(servo, angle):
     value = scale(angle, 0, 180, 500, 2500)
     set(servo, value)
 
 
-def setMotor(motor, value):
+def set_motor(motor, value):
     [direction, speed] = motor
     if value > 0:
         set(direction, 1)

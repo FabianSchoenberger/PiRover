@@ -1,26 +1,45 @@
-import threading
+import asyncio
+import base64
+import time
 
 import camera
 import mqtt
-
-mqtt.connect()
-mqtt.start()
+import websocket
 
 
-# region subscribe to controls
-# TODO
-# endregion
-
-# region publish video
-def publishVideo():
+# region websocket
+async def send_video(ws):
     capture = camera.capture()
     while True:
         buffer = camera.read(capture)
-        mqtt.publishImage(mqtt.CAMERA, buffer)
+        payload = base64.b64encode(buffer).decode('utf-8')
+        await ws.send(payload)
+        time.sleep(1 / 10) # 10 FPS
 
 
-videoThread = threading.Thread(target=publishVideo)
-videoThread.start()
+async def _handler(ws):
+    asyncio.create_task(send_video(ws))
+
+    async for message in ws:
+        # TODO handle controls
+        print(message)
+
+
+def run_websocket():
+    websocket.start(_handler)
+
+
 # endregion
+
+# region mqtt
+def run_mqtt():
+    mqtt.connect()
+    mqtt.start()
+
+
+# endregion
+
+run_websocket()
+run_mqtt()
 
 input()
