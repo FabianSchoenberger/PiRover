@@ -27,6 +27,7 @@ def set(cmd, value):
 
 
 def set_servo(servo, it):
+    if servo == STEER or servo == CAMERA_Y: it = -it # compensate for flipped servo
     value = scale(it, -90, 90, 500, 2500)
 
     set(servo, value)
