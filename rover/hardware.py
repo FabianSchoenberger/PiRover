@@ -27,7 +27,7 @@ def set(cmd, value):
 
 
 def set_servo(servo, it):
-    value = scale(it, 0, 180, 500, 2500)
+    value = scale(it, -90, 90, 500, 2500)
 
     set(servo, value)
 
@@ -35,13 +35,23 @@ def set_servo(servo, it):
 def set_motor(motor, it):
     if it < 0:
         value = scale(it, -1, 0, -1000, -400)
-    else:
+    elif it > 0:
         value = scale(it, 0, 1, 400, 1000)
+    else:
+        value = 0
 
     [direction, speed] = motor
-    if value > 0:
-        set(direction, 1)
-        set(speed, value)
-    else:
+    if value < 0:
         set(direction, 0)
         set(speed, -value)
+    else:
+        set(direction, 1)
+        set(speed, value)
+
+
+def reset():
+    set_servo(STEER, 0)
+    set_servo(CAMERA_Y, 0)
+    set_servo(CAMERA_X, 0)
+    set_motor(LEFT, 0)
+    set_motor(RIGHT, 0)
