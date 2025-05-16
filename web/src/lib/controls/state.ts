@@ -1,8 +1,10 @@
 export interface State {
     drive: number,
     steer: number,
-    camera: {
-        x: number,
-        y: number
-    }
+    camera: Vector
+}
+
+export interface Vector {
+    x: number,
+    y: number
 }

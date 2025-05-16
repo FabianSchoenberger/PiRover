@@ -1,6 +1,7 @@
-import type {State} from "./state"
+import type {State, Vector} from "./state"
 import {clamp} from "../util/clamp";
 import type {Source} from "./source";
+import type {Action} from "svelte/action";
 
 export class Keyboard implements Source {
     public state: State = {
@@ -12,9 +13,9 @@ export class Keyboard implements Source {
         }
     };
 
-    private _driveChange?: (speed: number) => void
-    private _steerChange?: (steer: number) => void
-    private _cameraChange?: (camera: { x: number; y: number; }) => void
+    private _driveChange?: Action<number>
+    private _steerChange?: Action<number>
+    private _cameraChange?: Action<Vector>
 
     private _pressed: Set<string> = new Set()
     private _cameraXTimeout?: NodeJS.Timeout
@@ -26,20 +27,28 @@ export class Keyboard implements Source {
     }
 
     reset() {
+        this.state = {
+            drive: 0,
+            steer: 0,
+            camera: {
+                x: 0,
+                y: 0
+            }
+        }
         this._driveChange = undefined
         this._steerChange = undefined
         this._cameraChange = undefined
     }
 
-    onDriveChange(callback: (speed: number) => void): void {
+    onDriveChange(callback: Action<number>) {
         this._driveChange = callback
     }
 
-    onSteerChange(callback: (steer: number) => void): void {
+    onSteerChange(callback: Action<number>) {
         this._steerChange = callback
     }
 
-    onCameraChange(callback: (camera: { x: number; y: number; }) => void): void {
+    onCameraChange(callback: Action<Vector>) {
         this._cameraChange = callback
     }
 
@@ -73,10 +82,10 @@ export class Keyboard implements Source {
     private handleDrive() {
         let drive = 0
         if (this._pressed.has("w")) {
-            drive += 0.5
+            drive += 1
         }
         if (this._pressed.has("s")) {
-            drive -= 0.5
+            drive -= 1
         }
 
         if (drive !== this.state.drive) {

@@ -1,54 +1,57 @@
 <script lang="ts">
     import Camera from "./lib/Camera.svelte";
-    import {ws} from "./lib/websocket";
-    import {gamepad} from "./lib/controls/gamepad";
-    import {keyboard} from "./lib/controls/keyboard";
+    import Controls from "./lib/Controls.svelte";
 
-    let source = $state(keyboard);
+    const speedMult = 1
 
-    $effect(() => {
-        source.onDriveChange((drive: number) => {
-            console.log("speed", drive)
-            ws.send(JSON.stringify({
-                type: "drive",
-                speed: drive * 0.5
-            }))
-        })
-        source.onSteerChange((steer: number) => {
-            console.log("steer", steer)
-            ws.send(JSON.stringify({
-                type: "steer",
-                angle: steer
-            }))
-        })
-        source.onCameraChange((camera: { x: number, y: number }) => {
-            console.log("camera", camera)
-            ws.send(JSON.stringify({
-                type: "camera",
-                x: camera.x,
-                y: camera.y
-            }))
-        })
-    })
+    let ip = $state("10.173.8.45")
+    let ws: WebSocket | undefined = $state()
+    let enabled = $derived(ws !== undefined)
 
-    function toggleSource() {
-        source.reset()
-        if (source === keyboard) {
-            source = gamepad
-        } else {
-            source = keyboard
-        }
+    function connect() {
+        ws = new WebSocket(`ws://${ip}:80`);
+    }
+
+    function handleDriveChange(drive: number) {
+        console.log("speed", drive)
+        ws.send(JSON.stringify({
+            type: "drive",
+            speed: drive * speedMult
+        }))
+    }
+
+    function handleSteerChange(steer: number) {
+        console.log("steer", steer)
+        ws.send(JSON.stringify({
+            type: "steer",
+            angle: steer
+        }))
+    }
+
+    function handleCameraChange({x, y}: number) {
+        console.log("camera", x, y)
+        ws.send(JSON.stringify({
+            type: "camera",
+            x,
+            y
+        }))
     }
 </script>
 
 <main>
     <div>
-        <!--TODO controls component with callbacks for changes-->
-        <button onclick={toggleSource}>source: {source === keyboard ? "keyboard" : "gamepad"}</button>
+        <input bind:value={ip}/>
+        <button onclick={connect}>connect</button>
     </div>
     <div>
-        <!--TODO pass websocket when creating with IP input-->
-        <Camera/>
+        <Controls {enabled}
+                  onDriveChange={handleDriveChange}
+                  onSteerChange={handleSteerChange}
+                  onCameraChange={handleCameraChange}
+        />
+    </div>
+    <div>
+        <Camera {ws}/>
     </div>
 </main>
 
