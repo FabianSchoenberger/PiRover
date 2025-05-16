@@ -30,12 +30,9 @@ async def _handler(ws):
             hardware.set_motor(hardware.RIGHT, payload["speed"])
         elif type == "steer":
             hardware.set_servo(hardware.STEER, payload["angle"])
-        elif type == "camera/x":
+        elif type == "camera":
             hardware.set_servo(hardware.CAMERA_X, payload["x"])
-        elif type == "camera/y":
             hardware.set_servo(hardware.CAMERA_Y, payload["y"])
-        # TODO handle controls
-        print(message)
 
 
 def run_websocket():
