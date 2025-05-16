@@ -43,9 +43,11 @@
 
 <main>
     <div>
+        <!--TODO controls component with callbacks for changes-->
         <button onclick={toggleSource}>source: {source === keyboard ? "keyboard" : "gamepad"}</button>
     </div>
     <div>
+        <!--TODO pass websocket when creating with IP input-->
         <Camera/>
     </div>
 </main>
