@@ -1,6 +1,8 @@
-from util import *
-import smbus
 import time
+
+import smbus
+
+from util import *
 
 address = 0x18
 bus = smbus.SMBus(1)
@@ -24,12 +26,18 @@ def set(cmd, value):
     time.sleep(0.001)
 
 
-def set_servo(servo, angle):
-    value = scale(angle, 0, 180, 500, 2500)
+def set_servo(servo, it):
+    value = scale(it, 0, 180, 500, 2500)
+
     set(servo, value)
 
 
-def set_motor(motor, value):
+def set_motor(motor, it):
+    if it < 0:
+        value = scale(it, -1, 0, -1000, -400)
+    else:
+        value = scale(it, 0, 1, 400, 1000)
+
     [direction, speed] = motor
     if value > 0:
         set(direction, 1)
