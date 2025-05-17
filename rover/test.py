@@ -24,6 +24,20 @@ def testMotor(motor):
     time.sleep(1)
     set_motor(motor, 0)
 
+def testLed():
+    set_led(LED_RED, 1)
+    time.sleep(0.01)
+    set_led(LED_RED, 0)
+
+    set_led(LED_GREEN, 1)
+    time.sleep(0.01)
+    set_led(LED_GREEN, 0)
+
+    set_led(LED_BLUE, 1)
+    time.sleep(0.01)
+    set_led(LED_BLUE, 0)
+
+
 
 testServo(STEER, 50, 130)
 testServo(CAMERA_X, 70, 150)

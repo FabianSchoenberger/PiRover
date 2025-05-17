@@ -13,6 +13,11 @@ CAMERA_Y = 1
 CAMERA_X = 2
 LEFT = [6, 4]
 RIGHT = [7, 5]
+LED_RED = 9
+LED_GREEN = 10
+LED_BLUE = 11
+BUZZER = 8
+
 
 
 def set(cmd, value):
@@ -49,6 +54,15 @@ def set_motor(motor, it):
         set(direction, 1)
         set(speed, value)
 
+def set_led(led, it):
+    if it == 1:
+        set(led, 0)
+    else:
+        set(led, 1)
+
+def set_buzzer(it):
+    set(BUZZER, it)
+
 
 def reset():
     set_servo(STEER, 0)
@@ -56,3 +70,7 @@ def reset():
     set_servo(CAMERA_X, 0)
     set_motor(LEFT, 0)
     set_motor(RIGHT, 0)
+    set_led(LED_RED, 0)
+    set_led(LED_GREEN, 0)
+    set_led(LED_BLUE, 0)
+    set_buzzer(0)

@@ -33,6 +33,12 @@ async def _handler(ws):
         elif type == "camera":
             hardware.set_servo(hardware.CAMERA_X, payload["x"])
             hardware.set_servo(hardware.CAMERA_Y, payload["y"])
+        elif type == "led":
+            hardware.set_led(hardware.LED_RED, payload["red"])
+            hardware.set_led(hardware.LED_GREEN, payload["green"])
+            hardware.set_led(hardware.LED_BLUE, payload["blue"])
+        elif type == "buzzer":
+            hardware.set_buzzer(payload["buzzer"])
 
 
 def run_websocket():
