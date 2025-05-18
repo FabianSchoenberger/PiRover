@@ -55,14 +55,16 @@ def set_motor(motor, it):
 
 
 def set_led(led, it):
-    if it == 1:
-        set(led, 0)
-    else:
+    value = it
+    if value != 0:
         set(led, 1)
+    else:
+        set(led, 0)
 
 
 def set_buzzer(buzzer, it):
-    set(buzzer, it)
+    value = scale(it, 0, 1, 0, 65535)
+    set(buzzer, value)
 
 
 def reset():
