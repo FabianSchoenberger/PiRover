@@ -38,7 +38,7 @@ async def _handler(ws):
             hardware.set_led(hardware.LED_GREEN, payload["green"])
             hardware.set_led(hardware.LED_BLUE, payload["blue"])
         elif type == "buzzer":
-            hardware.set_buzzer(payload["buzzer"])
+            hardware.set_buzzer(hardware.BUZZER, payload["buzzer"])
 
 
 def run_websocket():

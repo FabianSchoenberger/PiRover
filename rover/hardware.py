@@ -19,7 +19,6 @@ LED_BLUE = 11
 BUZZER = 8
 
 
-
 def set(cmd, value):
     value = int(value)
 
@@ -32,7 +31,7 @@ def set(cmd, value):
 
 
 def set_servo(servo, it):
-    if servo == STEER or servo == CAMERA_Y: it = -it # compensate for flipped servo
+    if servo == STEER or servo == CAMERA_Y: it = -it  # compensate for flipped servo
     value = scale(it, -90, 90, 500, 2500)
 
     set(servo, value)
@@ -54,11 +53,13 @@ def set_motor(motor, it):
         set(direction, 1)
         set(speed, value)
 
+
 def set_led(led, it):
     if it == 1:
         set(led, 0)
     else:
         set(led, 1)
+
 
 def set_buzzer(buzzer, it):
     set(buzzer, it)
@@ -74,3 +75,7 @@ def reset():
     set_led(LED_GREEN, 0)
     set_led(LED_BLUE, 0)
     set_buzzer(BUZZER, 0)
+
+
+if __name__ == "main":
+    reset()

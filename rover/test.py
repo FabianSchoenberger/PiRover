@@ -25,12 +25,14 @@ def testMotor(motor):
     for i in np.arange(1, 0, -0.01):
         set_motor(motor, i)
         time.sleep(0.001)
+    set_motor(motor, 0)
     for i in np.arange(0, -1, -0.01):
         set_motor(motor, i)
         time.sleep(0.001)
     for i in np.arange(-1, 0, 0.01):
         set_motor(motor, i)
         time.sleep(0.001)
+    set_motor(motor, 0)
 
 
 def testLed():
