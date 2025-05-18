@@ -55,7 +55,7 @@ def set_motor(motor, it):
 
 
 def set_led(led, it):
-    value = it
+    value = scale(it, 0, 1, 1, 0)
     set(led, value)
 
 

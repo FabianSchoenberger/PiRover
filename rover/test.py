@@ -63,6 +63,7 @@ def testBuzzer():
     set_buzzer(BUZZER, 0)
 
 
+reset()
 testServo(STEER, -40, 40)
 testServo(CAMERA_X, -20, 60)
 testServo(CAMERA_Y, -50, 50)
