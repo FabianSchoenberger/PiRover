@@ -26,16 +26,29 @@ def testMotor(motor):
 
 def testLed():
     set_led(LED_RED, 1)
-    time.sleep(0.01)
+    time.sleep(1)
     set_led(LED_RED, 0)
 
     set_led(LED_GREEN, 1)
-    time.sleep(0.01)
+    time.sleep(1)
     set_led(LED_GREEN, 0)
 
     set_led(LED_BLUE, 1)
-    time.sleep(0.01)
+    time.sleep(1)
     set_led(LED_BLUE, 0)
+
+    set_led(LED_RED, 1)
+    set_led(LED_GREEN, 1)
+    set_led(LED_BLUE, 1)
+    time.sleep(1)
+    set_led(LED_RED, 0)
+    set_led(LED_GREEN, 0)
+    set_led(LED_BLUE, 0)
+
+def testBuzzer():
+    set_buzzer(BUZZER, 1)
+    time.sleep(1)
+    set_buzzer(BUZZER, 0)
 
 
 
@@ -44,3 +57,4 @@ testServo(CAMERA_X, 70, 150)
 testServo(CAMERA_Y, 40, 140)
 testMotor(LEFT)
 testMotor(RIGHT)
+testLed()

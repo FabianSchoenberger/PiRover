@@ -60,8 +60,8 @@ def set_led(led, it):
     else:
         set(led, 1)
 
-def set_buzzer(it):
-    set(BUZZER, it)
+def set_buzzer(buzzer, it):
+    set(buzzer, it)
 
 
 def reset():
@@ -73,4 +73,4 @@ def reset():
     set_led(LED_RED, 0)
     set_led(LED_GREEN, 0)
     set_led(LED_BLUE, 0)
-    set_buzzer(0)
+    set_buzzer(BUZZER, 0)
