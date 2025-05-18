@@ -56,10 +56,7 @@ def set_motor(motor, it):
 
 def set_led(led, it):
     value = it
-    if value != 0:
-        set(led, 1)
-    else:
-        set(led, 0)
+    set(led, value)
 
 
 def set_buzzer(buzzer, it):

@@ -59,7 +59,7 @@ def testLed():
 
 def testBuzzer():
     set_buzzer(BUZZER, 1)
-    time.sleep(1)
+    time.sleep(10)
     set_buzzer(BUZZER, 0)
 
 
