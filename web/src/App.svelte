@@ -55,7 +55,7 @@
             <input
                     type="range"
                     id="speed"
-                    min="0"
+                    min="0.1"
                     max="1"
                     step="0.01"
                     bind:value={speedMult}
