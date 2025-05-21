@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: oklch(0.7012 0.1342 71.47);
+    --color-primary-dark: oklch(0.63108 0.1342 71.47);
+    --color-danger: oklch(63.07% 0.194 29.44);
+    --color-danger-dark: oklch(54.33% 0.174 29.7);
+}
+
+@layer base {
+    .button-primary {
+        @apply h-12 p-2 text-sm font-semibold cursor-pointer bg-primary hover:bg-primary-dark text-white rounded-md flex items-center gap-2
+    }
+
+    .button-danger {
+        @apply h-12 p-2 text-sm font-semibold cursor-pointer bg-danger hover:bg-danger-dark text-white rounded-md flex items-center gap-2
+    }
+
+    .button-grey {
+        @apply h-12 p-2 text-sm font-semibold cursor-pointer rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 hover:text-gray-900 flex items-center gap-2
+    }
+
+    .input-primary {
+        @apply p-3 border border-gray-200 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
+    }
+}
