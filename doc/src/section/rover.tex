@@ -89,11 +89,62 @@ python mDev.py RGBLED
 
 Once we confirmed that everything was functioning correctly, we could focus on developing our own software.
 
+
 \subsection{Software}
-%TODO Describe how our software works
 
+The software in the \texttt{rover/} folder controls the PiRover's hardware and manages communication between the Raspberry Pi and the web interface. Below is a short explanation of each file and how they work together.
 
+The file \texttt{main.py} is the starting point of the system. It uses functions from \texttt{hardware.py} to control motors and LEDs, uses \texttt{camera.py} to get live video, and starts communication via \texttt{mqtt.py} and \texttt{websocket.py}.
+The modules are connected like this:
+\begin{itemize}
+    \item \texttt{main.py} imports and coordinates all other modules.
+    \item \texttt{hardware.py} is used by \texttt{main.py} and \texttt{test.py} to control the hardware.
+    \item \texttt{camera.py} is used by \texttt{main.py} to send video frames.
+    \item \texttt{mqtt.py} and \texttt{websocket.py} handle communication, both started from \texttt{main.py}.
+    \item \texttt{util.py} is a helper used by \texttt{hardware.py} for scaling values.
+    \item \texttt{test.py} is separate and only used for checking the hardware.
+\end{itemize}
 
+\subsubsection*{\texttt{main.py}}
+This is the main program. It:
+\begin{itemize}
+    \item resets the hardware,
+    \item starts the WebSocket server,
+    \item connects to the MQTT broker.
+\end{itemize}
+It also sends commands to the hardware and streams live camera video.
+
+\subsubsection*{\texttt{hardware.py}}
+Controls the physical components using I2C:
+\begin{itemize}
+    \item motors (driving and steering),
+    \item camera servos,
+    \item RGB LEDs,
+    \item buzzer.
+\end{itemize}
+It includes a \texttt{reset()} function to stop all parts safely.
+
+\subsubsection*{\texttt{camera.py}}
+Uses OpenCV to read video frames from the camera. The frames are sent to the web interface as JPEG images.
+
+\subsubsection*{\texttt{mqtt.py}}
+Handles MQTT communication. It connects to the MQTT broker, subscribes to topics, and sends or receives messages.
+
+\subsubsection*{\texttt{websocket.py}}
+Starts a WebSocket server for real-time communication with the frontend. It runs in a background thread.
+
+\subsubsection*{\texttt{util.py}}
+Contains a helper function \texttt{scale()} to convert values (e.g., servo angles or motor speed) into the correct format for I2C.
+
+\subsubsection*{\texttt{test.py}}
+Used to test the hardware components. It includes test functions for:
+\begin{itemize}
+    \item servo motors,
+    \item drive motors,
+    \item RGB LEDs,
+    \item the buzzer.
+\end{itemize}
+All parts are tested one after another.
 
 
 
