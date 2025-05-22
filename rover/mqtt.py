@@ -1,7 +1,6 @@
-import paho.mqtt.client as mqtt
+import json
 
-# topics
-EXAMPLE = "example"
+import paho.mqtt.client as mqtt
 
 BROKER_HOST = "localhost"
 BROKER_PORT = 1883
@@ -22,6 +21,10 @@ def subscribe(topic, callback):
 
 def publish(topic, payload):
     mqtt.publish(topic, payload)
+
+
+def publishJson(topic, payload):
+    publish(topic, json.dumps(payload))
 
 
 def start():

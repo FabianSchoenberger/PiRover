@@ -1,7 +1,9 @@
 import time
+from datetime import datetime, timezone
 
 import smbus
 
+import mqtt
 from util import *
 
 address = 0x18
@@ -17,6 +19,30 @@ LED_RED = 9
 LED_GREEN = 10
 LED_BLUE = 11
 BUZZER = 8
+
+
+def publish(hardware, value):
+    topic = "none"
+    if hardware == STEER:
+        topic = "rover/servo/steer"
+    elif hardware == CAMERA_X:
+        topic = "rover/servo/camera_x"
+    elif hardware == CAMERA_Y:
+        topic = "rover/servo/camera_y"
+    elif hardware == LEFT:
+        topic = "rover/motor/left"
+    elif hardware == RIGHT:
+        topic = "rover/motor/right"
+    elif hardware == LED_RED:
+        topic = "rover/led/red"
+    elif hardware == LED_GREEN:
+        topic = "rover/led/green"
+    elif hardware == LED_BLUE:
+        topic = "rover/led/blue"
+    elif hardware == BUZZER:
+        topic = "rover/buzzer"
+    timestamp = datetime.now(timezone.utc).isoformat()
+    mqtt.publishJson(topic, {"timestamp": timestamp, "value": value})
 
 
 def set(cmd, value):
@@ -35,6 +61,7 @@ def set_servo(servo, it):
     value = scale(it, -90, 90, 500, 2500)
 
     set(servo, value)
+    publish(servo, value)
 
 
 def set_motor(motor, it):
@@ -52,16 +79,19 @@ def set_motor(motor, it):
     else:
         set(direction, 1)
         set(speed, value)
+    publish(motor, value)
 
 
 def set_led(led, it):
     value = scale(it, 0, 1, 1, 0)
     set(led, value)
+    publish(led, value)
 
 
 def set_buzzer(buzzer, it):
     value = scale(it, 0, 1, 0, 65535)
     set(buzzer, value)
+    publish(buzzer, value)
 
 
 def reset():

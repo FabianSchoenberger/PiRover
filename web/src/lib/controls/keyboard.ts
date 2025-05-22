@@ -10,12 +10,14 @@ export class Keyboard implements Source {
         camera: {
             x: 0,
             y: 0
-        }
+        },
+        buzzer: 0
     };
 
     private _driveChange?: Action<number>
     private _steerChange?: Action<number>
     private _cameraChange?: Action<Vector>
+    private _buzzerChange?: Action<number>
 
     private _pressed: Set<string> = new Set()
     private _cameraXTimeout?: NodeJS.Timeout
@@ -33,11 +35,13 @@ export class Keyboard implements Source {
             camera: {
                 x: 0,
                 y: 0
-            }
+            },
+            buzzer: 0
         }
         this._driveChange = undefined
         this._steerChange = undefined
         this._cameraChange = undefined
+        this._buzzerChange = undefined
     }
 
     onDriveChange(callback: Action<number>) {
@@ -52,6 +56,10 @@ export class Keyboard implements Source {
         this._cameraChange = callback
     }
 
+    onBuzzerChange(callback: Action<number>) {
+        this._buzzerChange = callback
+    }
+
     private notifyDriveChange() {
         this._driveChange?.(this.state.drive)
     }
@@ -64,12 +72,17 @@ export class Keyboard implements Source {
         this._cameraChange?.(this.state.camera)
     }
 
+    private notifyBuzzerChange() {
+        this._buzzerChange?.(this.state.buzzer)
+    }
+
     private handleKeydown(e: KeyboardEvent) {
         if (this._pressed.has(e.key)) return
         this._pressed.add(e.key)
         this.handleDrive()
         this.handleSteer()
         this.handleCamera()
+        this.handleBuzzer()
     }
 
     private handleKeyup(e: KeyboardEvent) {
@@ -77,6 +90,7 @@ export class Keyboard implements Source {
         this.handleDrive()
         this.handleSteer()
         this.handleCamera()
+        this.handleBuzzer()
     }
 
     private handleDrive() {
@@ -163,6 +177,18 @@ export class Keyboard implements Source {
             handle()
         } else if (!this._pressed.has("ArrowLeft") && !this._pressed.has("ArrowRight")) {
             clearInterval(this._cameraYTimeout)
+        }
+    }
+
+    private handleBuzzer() {
+        let buzzer = 0
+        if (this._pressed.has("f")) {
+            buzzer = 1
+        }
+
+        if (buzzer !== this.state.buzzer) {
+            this.state.buzzer = buzzer
+            this.notifyBuzzerChange()
         }
     }
 }

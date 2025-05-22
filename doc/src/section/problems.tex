@@ -13,5 +13,8 @@ During the course of the project, we encountered several challenges that require
 
     \item \textbf{Power connection issues:}
     The battery holder with the included DC plug, used to power the Raspberry Pi shield, had an intermittent contact issue that was difficult to locate. This caused unexpected power losses and system shutdowns during development and testing, making debugging and progress more difficult.
-    \item \textbf{...}
-\item \end{itemize}
+
+    \item \textbf{Latency:}
+    Using MQTT for the camera feed introduced additional latency and load, resulting in extremely low FPS and delayed images.
+    To fix this, we decided to use websockets instead, as they caused no additional latency.
+\end{itemize}
