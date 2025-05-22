@@ -1,6 +1,4 @@
--- TODO: use env variables
-
-CREATE USER "grafana_user" WITH PASSWORD 'grafana_password';
+CREATE USER "grafana_user" WITH PASSWORD 'grafana_password_placeholder'; -- grafana_password_placeholder
 CREATE DATABASE grafana_db;
 
 \connect grafana_db
