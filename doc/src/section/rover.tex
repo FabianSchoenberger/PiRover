@@ -67,7 +67,6 @@ Additionally, we installed several required packages:
 \begin{itemize}
     \item i2c-tools
     \item python-smbus
-    \item mjpg-streamer
 \end{itemize}
 
 After this steps, we were able to connect to the RPi remotely.
@@ -102,7 +101,7 @@ The modules are connected like this:
     \item \texttt{camera.py} is used by \texttt{main.py} to send video frames.
     \item \texttt{mqtt.py} and \texttt{websocket.py} handle communication, both started from \texttt{main.py}.
     \item \texttt{util.py} is a helper used by \texttt{hardware.py} for scaling values.
-    \item \texttt{test.py} is separate and only used for checking the hardware.
+    \item \texttt{test.py} tests \texttt{hardware.py}.
 \end{itemize}
 
 \subsubsection*{\texttt{main.py}}
@@ -112,7 +111,7 @@ This is the main program. It:
     \item starts the WebSocket server,
     \item connects to the MQTT broker.
 \end{itemize}
-It also sends commands to the hardware and streams live camera video.
+It also sends commands to the hardware and streams live camera feed.
 
 \subsubsection*{\texttt{hardware.py}}
 Controls the physical components using I2C:
@@ -125,7 +124,7 @@ Controls the physical components using I2C:
 It includes a \texttt{reset()} function to stop all parts safely.
 
 \subsubsection*{\texttt{camera.py}}
-Uses OpenCV to read video frames from the camera. The frames are sent to the web interface as JPEG images.
+Uses OpenCV to read video frames from the camera. The frames are sent to the web interface as Base64-encoded JPEG images.
 
 \subsubsection*{\texttt{mqtt.py}}
 Handles MQTT communication. It connects to the MQTT broker, subscribes to topics, and sends or receives messages.
