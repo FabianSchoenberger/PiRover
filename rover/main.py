@@ -50,8 +50,8 @@ def run_mqtt():
     mqtt.start()
 
 
-hardware.reset()
 run_websocket()
 run_mqtt()
+hardware.reset()
 
 input()

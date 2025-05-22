@@ -1,3 +1,5 @@
+import json
+
 import paho.mqtt.client as mqtt
 
 # topics
@@ -22,6 +24,10 @@ def subscribe(topic, callback):
 
 def publish(topic, payload):
     mqtt.publish(topic, payload)
+
+
+def publishJson(topic, payload):
+    publish(topic, json.dumps(payload))
 
 
 def start():
