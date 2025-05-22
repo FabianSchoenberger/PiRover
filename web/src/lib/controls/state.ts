@@ -1,7 +1,8 @@
 export interface State {
     drive: number,
     steer: number,
-    camera: Vector
+    camera: Vector,
+    buzzer: number
 }
 
 export interface Vector {

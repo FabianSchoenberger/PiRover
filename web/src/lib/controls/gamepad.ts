@@ -13,6 +13,8 @@ import type {Action} from "svelte/action";
 // 10 = Left Stick
 // 11 = Right Stick
 
+const X = 3
+
 export class Gamepad implements Source {
     public state: State = {
         drive: 0,
@@ -20,12 +22,14 @@ export class Gamepad implements Source {
         camera: {
             x: 0,
             y: 0
-        }
+        },
+        buzzer: 0
     };
 
     private _driveChange?: Action<number>
     private _steerChange?: Action<number>
     private _cameraChange?: Action<Vector>
+    private _buzzerChange?: Action<number>
 
     private _buttons: Set<string> = new Set()
     private _leftStick!: Vector
@@ -45,11 +49,13 @@ export class Gamepad implements Source {
             camera: {
                 x: 0,
                 y: 0
-            }
+            },
+            buzzer: 0
         }
         this._driveChange = undefined
         this._steerChange = undefined
         this._cameraChange = undefined
+        this._buzzerChange = undefined
     }
 
     onDriveChange(callback: Action<number>) {
@@ -64,6 +70,10 @@ export class Gamepad implements Source {
         this._cameraChange = callback
     }
 
+    onBuzzerChange(callback: Action<number>) {
+        this._buzzerChange = callback
+    }
+
     private notifyDriveChange() {
         this._driveChange?.(this.state.drive)
     }
@@ -76,6 +86,10 @@ export class Gamepad implements Source {
         this._cameraChange?.(this.state.camera)
     }
 
+    private notifyBuzzerChange() {
+        this._buzzerChange?.(this.state.buzzer)
+    }
+
     private handleConnected() {
         clearInterval(this._timeout)
         setInterval(() => {
@@ -86,9 +100,12 @@ export class Gamepad implements Source {
 
             const gp = gamepads[0]!;
             const buttons = gp.buttons;
+            this._buttons.clear()
             for (let i = 0; i < buttons.length; i++) {
                 const button = gp.buttons[i]
-                // this._buttons.add(...)
+                if (i == X && button.pressed) {
+                    this._buttons.add("X")
+                }
             }
             const axes = gp.axes
             this._leftStick = {x: axes[0], y: axes[1]}
@@ -104,6 +121,7 @@ export class Gamepad implements Source {
             this.handleDrive()
             this.handleSteer()
             this.handleCamera()
+            this.handleBuzzer()
         }, 100)
     }
 
@@ -151,6 +169,18 @@ export class Gamepad implements Source {
         if (y !== this.state.camera.y) {
             this.state.camera.y = y
             this.notifyCameraChange()
+        }
+    }
+
+    private handleBuzzer() {
+        let buzzer = 0
+        if (this._buttons.has("X")) {
+            buzzer = 1
+        }
+
+        if (buzzer !== this.state.buzzer) {
+            this.state.buzzer = buzzer
+            this.notifyBuzzerChange()
         }
     }
 }

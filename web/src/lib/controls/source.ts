@@ -10,4 +10,6 @@ export interface Source {
     onSteerChange(callback: (steer: number) => void): void
 
     onCameraChange(callback: (camera: Vector) => void): void
+
+    onBuzzerChange(callback: (buzzer: number) => void): void
 }
