@@ -19,9 +19,9 @@ SENSOR_TOPICS = [
 ]
 
 # --- MQTT Client Setup ---
-client = mqtt.Client()
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, userdata, flags, rc, properties):
     if rc == 0:
         print("Connected to MQTT Broker!")
     else:
@@ -80,3 +80,4 @@ finally:
     client.loop_stop() # Stop the network loop
     client.disconnect()
     print("MQTT client disconnected.")
+    

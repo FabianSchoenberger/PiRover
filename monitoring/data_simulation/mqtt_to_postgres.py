@@ -10,8 +10,8 @@ load_dotenv()
 
 # --- Database Details ---
 DB_HOST = "localhost"
-DB_NAME = os.getenv("POSTGRES_GRAFANA_DB")
-DB_USER = os.getenv("POSTGRES_GRAFANA_USER")
+DB_NAME = "grafana_db"
+DB_USER = "grafana_user"
 DB_PASSWORD = os.getenv("POSTGRES_GRAFANA_PASSWORD")
 
 if not DB_NAME or not DB_USER or not DB_PASSWORD:
@@ -50,9 +50,9 @@ def connect_db():
         connect_db()
 
 # --- MQTT Client Setup ---
-client = mqtt.Client()
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, userdata, flags, rc, properties):
     if rc == 0:
         print("Connected to MQTT Broker!")
         client.subscribe(MQTT_TOPIC_SUBSCRIBE)
