@@ -42,7 +42,7 @@ def publish(hardware, value):
     elif hardware == BUZZER:
         topic = "rover/buzzer"
     timestamp = datetime.now(timezone.utc).isoformat()
-    mqtt.publishJson(topic, {timestamp, value})
+    mqtt.publishJson(topic, {timestamp: timestamp, value: value})
 
 
 def set(cmd, value):
