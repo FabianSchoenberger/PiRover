@@ -101,8 +101,7 @@
         {/if}
     </div>
     {#if enabled}
-    <!-- TODO not centered -->
-    <div class="m-auto">
+    <div class="flex justify-center">
         <Camera {ws}/>
     </div>
     {/if}
