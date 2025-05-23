@@ -5,17 +5,26 @@ import random
 from datetime import datetime, timezone
 
 # MQTT Broker Details
-MQTT_BROKER_HOST = "localhost" # Or the IP/hostname of your MQTT broker
+MQTT_BROKER_HOST = "localhost" # mqtt broker runs on the raspberry itself
 MQTT_BROKER_PORT = 1883
 
 # Topics to simulate data for
 SENSOR_TOPICS = [
-    "rover/motor/left/pwm",
-    "rover/motor/right/pwm",
-    "rover/servo/steer_angle",
-    "rover/servo/camera_x",
-    "rover/servo/camera_y",
-    "rover/temperature",
+    "rover/simulated/servo/steer",
+
+    "rover/simulated/servo/camera_x",
+    "rover/simulated/servo/camera_y",
+
+    "rover/simulated/motor/left",
+    "rover/simulated/motor/right",
+
+    "rover/simulated/led/red",
+    "rover/simulated/led/blue",
+    "rover/simulated/led/green",
+
+    "rover/simulated/buzzer",
+
+    "rover/simulated/is_online"
 ]
 
 # --- MQTT Client Setup ---
@@ -44,14 +53,22 @@ except Exception as e:
 
 def simulate_sensor_value(topic):
     """Generates a simulated value based on the topic."""
-    if "pwm" in topic:
-        return random.uniform(0, 255) # Motor PWM values
-    elif "steer_angle" in topic:
+
+    # the actual values could be adjusted to be more realistic
+    if "/motor/" in topic:
+        return random.uniform(-2000, 2000) # Motor PWM values
+    elif "/servo/" in topic:
         return random.uniform(-90, 90) # Servo angle
-    elif "camera_" in topic:
-        return random.uniform(-50, 50) # Camera position (example range)
-    elif "temperature" in topic:
-        return random.uniform(20, 30) # Temperature in Celsius
+    elif "/led/" in topic:
+        if random.random() < 0.5:
+            return 1.0
+        return 0.0
+    elif "buzzer" in topic:
+        if random.random() < 0.02:
+            return 65535.0
+        return 0.0
+    elif "is_online" in topic:
+        return 1.0 # value does not actually matter
     else:
         return random.random() # Default random value
 
