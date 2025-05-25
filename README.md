@@ -13,7 +13,12 @@
 
 ```text
 /
-├── doc/         # LaTeX documentation
-├── proposal/    # Project proposal (LaTeX)
-├── rover/       # Python scripts for hardware control
-├── web/         # Svelte frontend project
+├── report/      # Project Report
+├── proposal/    # Project Proposal
+├── rover/       # Python scripts for the Rover
+├── web/         # Svelte Web Interface
+```
+
+## Running
+
+// TODO
