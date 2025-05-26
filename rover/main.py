@@ -1,6 +1,8 @@
 import asyncio
 import base64
 import json
+import threading
+import time
 
 import camera
 import hardware
@@ -8,6 +10,14 @@ import mqtt
 import websocket
 
 fps = 30
+
+
+def send_alive():
+    while True:
+        mqtt.publishJson("rover/is_online", {
+            "value": True
+        })
+        time.sleep(10)
 
 
 async def send_video(ws):
@@ -53,5 +63,8 @@ def run_mqtt():
 run_websocket()
 run_mqtt()
 hardware.reset()
+
+alive_thread = threading.Thread(target=send_alive)
+alive_thread.start()
 
 input()
