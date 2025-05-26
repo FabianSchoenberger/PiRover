@@ -306,8 +306,9 @@
               "options": {
                 "from": 0,
                 "result": {
-                  "color": "transparent",
-                  "index": 0
+                  "color": "dark-green",
+                  "index": 0,
+                  "text": "ON"
                 },
                 "to": 0.5
               },
@@ -317,8 +318,9 @@
               "options": {
                 "from": 0.6,
                 "result": {
-                  "color": "dark-green",
-                  "index": 1
+                  "color": "transparent",
+                  "index": 1,
+                  "text": "OFF"
                 },
                 "to": 1.1
               },
@@ -350,8 +352,9 @@
                     "options": {
                       "from": 0,
                       "result": {
-                        "color": "transparent",
-                        "index": 0
+                        "color": "dark-red",
+                        "index": 0,
+                        "text": "ON"
                       },
                       "to": 0.5
                     },
@@ -361,8 +364,9 @@
                     "options": {
                       "from": 0.6,
                       "result": {
-                        "color": "dark-red",
-                        "index": 1
+                        "color": "transparent",
+                        "index": 1,
+                        "text": "OFF"
                       },
                       "to": 1.1
                     },
@@ -385,8 +389,9 @@
                     "options": {
                       "from": 0,
                       "result": {
-                        "color": "transparent",
-                        "index": 0
+                        "color": "dark-blue",
+                        "index": 0,
+                        "text": "ON"
                       },
                       "to": 0.5
                     },
@@ -396,8 +401,9 @@
                     "options": {
                       "from": 0.6,
                       "result": {
-                        "color": "dark-blue",
-                        "index": 1
+                        "color": "transparent",
+                        "index": 1,
+                        "text": "OFF"
                       },
                       "to": 1.1
                     },
@@ -1087,13 +1093,13 @@
     "list": []
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "General Dashboard Rover",
   "uid": "f5632e64-06c2-463c-84ed-cb3b2b79ecc1",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }

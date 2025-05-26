@@ -3,6 +3,7 @@ import base64
 import json
 import threading
 import time
+from datetime import datetime, timezone
 
 import camera
 import hardware
@@ -14,9 +15,9 @@ fps = 30
 
 def send_alive():
     while True:
-        mqtt.publishJson("rover/is_online", {
-            "value": True
-        })
+        topic = "rover/is_online"
+        timestamp = datetime.now(timezone.utc).isoformat()
+        mqtt.publishJson(topic, {"timestamp": timestamp, "value": 1})
         time.sleep(10)
 
 
