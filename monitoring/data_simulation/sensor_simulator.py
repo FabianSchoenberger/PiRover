@@ -64,7 +64,7 @@ def simulate_sensor_value(topic):
             return 1.0
         return 0.0
     elif "buzzer" in topic:
-        if random.random() < 0.02:
+        if random.random() < 0.2:
             return 65535.0
         return 0.0
     elif "is_online" in topic:
@@ -86,7 +86,7 @@ try:
             client.publish(topic, payload)
             print(f"Published to {topic}: {payload}")
 
-        time.sleep(1) # Publish data for each sensor approximately every 1 second
+        time.sleep(5) # Publish data for each sensor approximately every 5 seconds
 
 except KeyboardInterrupt:
     print("Simulation stopped by user.")

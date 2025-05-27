@@ -31,12 +31,38 @@
     \maketitle
     \tableofcontents
 
+    \vspace{-0.25cm}
+    \section*{Contribution Table}
+    \vspace{-0.3cm}
+    \begin{flushleft}
+        \begin{minipage}{0.6\textwidth}
+            \begin{table}[H]
+                \centering
+                \renewcommand{\arraystretch}{1.3}
+                \begin{tabular}{|l|p{10cm}|}
+                    \hline
+                    \textbf{Task} & \textbf{Contributors} \\
+                    \hline
+                    Setup & Everyone \\
+                    Rover & Schönberger Fabian, Siala Alexander \\
+                    Web Interface & Schönberger Fabian, Pichler Alexander, Abdu`llah Arij  \\
+                    Grafana & Olivotto Philipp \\
+                    Report & Everyone \\
+                    Presentation & Siala Alexander \\
+                    Video & Schönberger Fabian \\
+                    \hline
+                \end{tabular}\label{tab:table}
+            \end{table}
+        \end{minipage}
+    \end{flushleft}
+
     \newpage
 
     \input{section/description}
     \input{section/architecture}
     \input{section/rover}
     \input{section/web}
+    \input{section/grafana}
     \input{section/git}
     \input{section/problems}
     \input{section/futurework}
