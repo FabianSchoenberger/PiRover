@@ -84,42 +84,20 @@
 
     Once the image was ready, we powered up the Raspberry Pi and connected it to a temporary display. Then, we connected the Pi to our Wi-Fi hotspot and noted down its IP address to enable remote access via SSH or Remote VNC.
 
-    Next, several settings had to be adjusted to allow remote connections:
-    \begin{itemize}
-        \item Enable I2C interface
-        \item Enable VNC server
-        \item Install XRDP
-        \item Adjust screen resolution
-    \end{itemize}
+    Next, several settings had to be adjusted to allow remote connections: enable I2C interface, enable VNC server, install XRDP and adjust screen resolution
 
     Finally, we cloned the Git repository for testing purposes:
     \begin{verbatim}
-git clone http://github.com/Freenove/Freenove_Three-wheeled_Smart_Car_Kit_for_Raspberry_Pi.git
+    git clone http://github.com/Freenove/Freenove_Three-wheeled_Smart_Car_Kit_for_Raspberry_Pi.git
     \end{verbatim}
-
-    Additionally, we installed several required packages:
-    \begin{itemize}
-        \item i2c-tools
-        \item python-smbus
-    \end{itemize}
-
+    Additionally, we installed two required packages: i2c-tools and python-smbus.
     After this steps, we were able to connect to the RPi remotely.
 
     \subsubsection{Testing}
     After preparing both the hardware and software, we tested the individual servo motors and the drive motors to check if they were working properly.
-
-    For this purpose, we used pre-made test scripts from the cloned Git repository:
-    \begin{verbatim}
-        python mDev.py servo
-        python mDev.py buzzer
-        python mDev.py motor
-        python mDev.py RGBLED
-    \end{verbatim}
-
-    Once we confirmed that everything was functioning correctly, we could focus on developing our own software.
+    For this purpose, we used the pre-made test script mDev.py from the cloned Git repository with different parameters (servo, buzzer, motor, RGBLED). Once we confirmed that everything was functioning correctly, we could focus on developing our own software.
 
     \subsection{Software}
-
     The software in the \texttt{rover/} folder controls the PiRover's hardware and manages communication between the Raspberry Pi and the web interface. Below is a short explanation of each file and how they work together.
 
     The file \texttt{main.py} is the starting point of the system. It uses functions from \texttt{hardware.py} to control motors and LEDs, uses \texttt{camera.py} to get live video, and starts communication via \texttt{mqtt.py} and \texttt{websocket.py}.
