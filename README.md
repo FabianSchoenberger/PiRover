@@ -22,7 +22,20 @@
 
 ## Running
 
-// TODO
+### Rover
+
+The rover can be started using the command `python rover/main.py`. \
+Note that this script requires root priviledges due to using port 80 for websocket connections.
+
+The rover connects to a MQTT broker running at `localhost:1883`. We installed `Mosquitto` locally on the rover.
+
+### Web Interface
+
+The web interface can be started using the command `npm run dev` in the `web` directory.
+By default, it can be accessed at `localhost:5173`.
+
+To connect to the rover, enter its IP and click on connect.
+This will establish a websocket connection over which camera feed and controls are sent.
 
 ### Grafana and PostgreSQL (Optional)
 If you just want to test the Grafana interface with simulated data:
